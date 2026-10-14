@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trionix Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div><p class="eyebrow">TRIONIX LABS</p><h1>Centro de soporte</h1></div>
+            <button id="logoutButton" class="button secondary hidden">Cerrar sesión</button>
+        </header>
+
+        <section id="loginView" class="panel auth-panel">
+            <p class="eyebrow">ACCESO DE AGENTES</p>
+            <h2>Iniciar sesión</h2>
+            <form id="loginForm" class="form-grid">
+                <label>Correo<input id="loginEmail" type="email" required autocomplete="email"></label>
+                <label>Contraseña<input id="loginPassword" type="password" required minlength="6" autocomplete="current-password"></label>
+                <button class="button" type="submit">Entrar</button>
+            </form>
+            <p id="loginMessage" class="message" aria-live="polite"></p>
+            <p class="hint">Si es la primera instalación, crea el primer agente mediante la API.</p>
+        </section>
+
+        <div id="appView" class="hidden">
+            <section class="panel">
+                <div class="section-heading"><div><p class="eyebrow">NUEVO REGISTRO</p><h2>Crear ticket</h2></div></div>
+                <form id="ticketForm" class="form-grid">
+                    <label>Cliente<input id="cliente" required maxlength="120"></label>
+                    <label>Asunto<input id="asunto" required minlength="5" maxlength="200"></label>
+                    <label>Prioridad<select id="prioridad"><option value="baja">Baja</option><option value="media" selected>Media</option><option value="alta">Alta</option></select></label>
+                    <button class="button" type="submit">Crear ticket</button>
+                </form>
+                <p id="ticketMessage" class="message" aria-live="polite"></p>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading"><div><p class="eyebrow">OPERACIÓN</p><h2>Tickets</h2></div><button id="refreshButton" class="button secondary">Actualizar</button></div>
+                <div class="filters"><label>Prioridad<select id="filterPriority"><option value="">Todas</option><option value="alta">Alta</option><option value="media">Media</option><option value="baja">Baja</option></select></label><label>Estado<select id="filterStatus"><option value="">Todos</option><option value="abierto">Abierto</option><option value="resuelto">Resuelto</option></select></label></div>
+                <div id="ticketList" class="ticket-list"></div>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading"><div><p class="eyebrow">EQUIPO</p><h2>Agentes</h2></div></div>
+                <form id="agentForm" class="form-grid agent-form">
+                    <label>Nombre<input id="agentName" required minlength="2"></label><label>Correo<input id="agentEmail" type="email" required></label><label>Especialidad<input id="agentSpecialty" required></label><label>Contraseña<input id="agentPassword" type="password" required minlength="6"></label><button class="button" type="submit">Crear agente</button>
+                </form>
+                <p id="agentMessage" class="message" aria-live="polite"></p>
+                <div id="agentList" class="agent-list"></div>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
